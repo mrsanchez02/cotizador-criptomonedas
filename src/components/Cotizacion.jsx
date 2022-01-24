@@ -14,13 +14,14 @@ const Info = styled.p`
 `;
 
 const Precio = styled.p`
+    margin: 0;
     font-size: 30px;
     span {
         font-weight: bold;
     }
 `;
 
-const Cotizacion = ({resultado}) => {
+const Cotizacion = ({resultado,closeCotizacion}) => {
 
     if(Object.keys(resultado).length===0)return null;
 
@@ -33,6 +34,10 @@ const Cotizacion = ({resultado}) => {
             <Info>precio mas bajo del dia: <span>{resultado.LOWDAY}</span></Info>
             <Info>Variacion ultimas 24 horas: <span>{resultado.CHANGEPCT24HOUR}</span></Info>
             <Info>Ultima actualizacion: <span>{resultado.LASTUPDATE}</span></Info>
+            <button
+                className='modal__btn'
+                onClick={closeCotizacion}
+            >Cerrar</button>
         </ResultadoDiv>
     )
 }

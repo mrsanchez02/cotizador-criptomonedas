@@ -5,6 +5,8 @@ import imagen from './cryptomonedas.png';
 import Formulario from './components/Formulario';
 import Cotizacion from './components/Cotizacion';
 import Spinner from './components/Spinner';
+import useModal from './hooks/useModal';
+import Modal from './components/Modal';
 
 const Contenedor = styled.div`
   max-width: 900px;
@@ -41,60 +43,68 @@ const Heading = styled.h1`
 
 function App() {
 
-  const [moneda,setMoneda]=useState('');
+  const [moneda, setMoneda]=useState('');
   const [criptomoneda, setCriptomoneda]=useState('');
   const [resultado, setResultado]=useState({});
   const [loading,setLoading]=useState(false);
+  const [isOpenCotizacion, openCotizacion, closeCotizacion]=useModal();
 
   useEffect(()=>{
 
     const cotizarCriptomoneda = async () => {
-      // Evitamos la ejecucion la primera vez.
-    if(moneda==='')return;
+          // Evitamos la ejecucion la primera vez.
+        if(moneda==='')return;
 
-    // Consultar la api para obtener la cotizacion.
-    const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`;
+        // Consultar la api para obtener la cotizacion.
+        const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`;
 
-    const resultado = await axios.get(url);
+        const resultado = await axios.get(url);
 
-    // Mostrar el spinner
-    setLoading(true);
+        //Abrir modal
+        openCotizacion();
 
-    // Ocultar el spinner y mostrar el resultado.
-    setTimeout(()=>{
-      // Cambiar el estado 
-      setLoading(false);
+        // Mostrar el spinner
+        setLoading(true);
 
-      setResultado(resultado.data.DISPLAY[criptomoneda][moneda]);
-    },2500)
+        // Ocultar el spinner y mostrar el resultado.
+        setTimeout(()=>{
+          // Cambiar el estado 
+          setLoading(false);
+          setResultado(resultado.data.DISPLAY[criptomoneda][moneda]);
+      },2500)
     }
 
     cotizarCriptomoneda();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[moneda,criptomoneda]);
 
 
   // Mostrar spinner o resultado
 
-  const componente = (loading)? <Spinner/> : <Cotizacion resultado={resultado} />
+  const componente = (loading)? <Spinner/> : <Cotizacion resultado={resultado} closeCotizacion={closeCotizacion}/>
   
   return (
     <Contenedor>
-      <div>
-        <Imagen 
-          src={imagen}
-          alt={'Imagen Kripto'}
-        />
-
-      </div>
       <div>
         <Heading>Cotiza Criptomonedas al Instante!</Heading>
         <Formulario
           setMoneda={setMoneda}
           setCriptomoneda={setCriptomoneda}
         />
-        {componente}
       </div>
+      <div>
+        <Imagen 
+          src={imagen}
+          alt={'Imagen Kripto'}
+        />
+      </div>
+      <Modal
+          isOpen={isOpenCotizacion}
+          closeCotizacion={closeCotizacion}
+        >
+          {componente}
+        </Modal>
     </Contenedor>
   );
 }
