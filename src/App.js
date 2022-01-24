@@ -61,7 +61,7 @@ function App() {
         const resultado = await axios.get(url);
 
         //Abrir modal
-        openCotizacion();
+        // openCotizacion();
 
         // Mostrar el spinner
         setLoading(true);
@@ -76,7 +76,6 @@ function App() {
 
     cotizarCriptomoneda();
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[moneda,criptomoneda]);
 
 
@@ -89,8 +88,14 @@ function App() {
       <div>
         <Heading>Cotiza Criptomonedas al Instante!</Heading>
         <Formulario
-          setMoneda={setMoneda}
-          setCriptomoneda={setCriptomoneda}
+          {...{
+            setMoneda,
+            setCriptomoneda,
+            openCotizacion
+          }}
+          // setMoneda={setMoneda}
+          // setCriptomoneda={setCriptomoneda}
+          // openCotizacion={openCotizacion}
         />
       </div>
       <div>
