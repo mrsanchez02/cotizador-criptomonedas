@@ -68,6 +68,7 @@ const Formulario = ({setMoneda,setCriptomoneda,openCotizacion}) => {
         setError(false);
         setMoneda(moneda);
         setCriptomoneda(criptomoneda);
+        // Open Modal cotizacion
         openCotizacion()
     };
 
