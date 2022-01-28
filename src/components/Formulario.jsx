@@ -46,7 +46,7 @@ const Formulario = ({setMoneda,setCriptomoneda,openCotizacion}) => {
     // Ejecutra llamado a la API.
     useEffect(()=>{
         const consultarAPI = async () => {
-            const url = 'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD';
+            const url = 'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=20&tsym=USD';
 
             const resultado = await axios.get(url);
             setListaCripto(resultado.data.Data);
