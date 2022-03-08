@@ -84,7 +84,7 @@ const Formulario = ({setMoneda,setCriptomoneda,openCotizacion}) => {
 
             <Boton
                 type='submit'
-                value='show'
+                value='Show'
             />
         </form>
     );

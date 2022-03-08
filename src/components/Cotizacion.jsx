@@ -29,15 +29,15 @@ const Cotizacion = ({resultado,closeCotizacion}) => {
 
     return (
         <ResultadoDiv>
-            <Precio>El precio es: <span>{resultado.PRICE}</span></Precio>
-            <Info>precio mas alto del dia: <span>{resultado.HIGHDAY}</span></Info>
-            <Info>precio mas bajo del dia: <span>{resultado.LOWDAY}</span></Info>
-            <Info>Variacion ultimas 24 horas: <span>{resultado.CHANGEPCT24HOUR}</span></Info>
-            <Info>Ultima actualizacion: <span>{resultado.LASTUPDATE}</span></Info>
+            <Precio>Actual price: <span>{resultado.PRICE}</span></Precio>
+            <Info>Highest price of the day: <span>{resultado.HIGHDAY}</span></Info>
+            <Info>Lowest price of the day: <span>{resultado.LOWDAY}</span></Info>
+            <Info>Variation last 24 hours: <span>{resultado.CHANGEPCT24HOUR}</span></Info>
+            <Info>Last update: <span>{resultado.LASTUPDATE}</span></Info>
             <button
                 className='modal__btn'
                 onClick={closeCotizacion}
-            >Cerrar</button>
+            >Close</button>
         </ResultadoDiv>
     )
 }
