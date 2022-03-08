@@ -86,16 +86,13 @@ function App() {
   return (
     <Contenedor>
       <div>
-        <Heading>Cotiza Criptomonedas al Instante!</Heading>
+        <Heading>Cryptocurrency Exchange Rates!</Heading>
         <Formulario
           {...{
             setMoneda,
             setCriptomoneda,
             openCotizacion
           }}
-          // setMoneda={setMoneda}
-          // setCriptomoneda={setCriptomoneda}
-          // openCotizacion={openCotizacion}
         />
       </div>
       <div>

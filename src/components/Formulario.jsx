@@ -38,10 +38,10 @@ const Formulario = ({setMoneda,setCriptomoneda,openCotizacion}) => {
     ]
 
     // Utilizar useMoneda (custom Hook).
-    const [ moneda, SelectMonedas ] = useMoneda('Elige tu Moneda','',MONEDAS);
+    const [ moneda, SelectMonedas ] = useMoneda('Choose your coin','',MONEDAS);
 
     // Utilizar useCriptomoneda (custom hook).
-    const [criptomoneda,SelectCripto ] = useCriptomoneda('Elige tu CriptoMoneda','',listaCripto);
+    const [criptomoneda,SelectCripto ] = useCriptomoneda('Choose your Cryptocoin','',listaCripto);
 
     // Ejecutra llamado a la API.
     useEffect(()=>{
@@ -76,7 +76,7 @@ const Formulario = ({setMoneda,setCriptomoneda,openCotizacion}) => {
         <form
             onSubmit={hanldeSubmit}
         >
-            {error ? <Error mensaje='Todos los campos son obligatorios'/> : null }
+            {error ? <Error mensaje='All fields required.'/> : null }
 
             <SelectMonedas />
 
