@@ -30,11 +30,11 @@ const Formulario = ({setMoneda,setCriptomoneda,openCotizacion}) => {
     const [error, setError] = useState(false);
 
     const MONEDAS = [
-        {codigo: 'USD', nombre: 'Dolar de Estados Unidos'},
-        {codigo: 'DOP', nombre: 'Peso Dominicano'},
-        {codigo: 'MXN', nombre: 'Peso mexicano'},
+        {codigo: 'USD', nombre: 'US Dollar'},
+        {codigo: 'DOP', nombre: 'Dominican Peso'},
+        {codigo: 'MXN', nombre: 'Mexican Peso'},
         {codigo: 'EUR', nombre: 'Euro'},
-        {codigo: 'GBP', nombre: 'Libra Esterlina'}
+        {codigo: 'GBP', nombre: 'Pound Sterling'}
     ]
 
     // Utilizar useMoneda (custom Hook).
