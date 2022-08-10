@@ -25,8 +25,6 @@ const Cotizacion = ({resultado,closeCotizacion}) => {
 
     if(Object.keys(resultado).length===0)return null;
 
-    console.log(resultado)
-
     return (
         <ResultadoDiv>
             <Precio>Actual price: <span>{resultado.PRICE}</span></Precio>

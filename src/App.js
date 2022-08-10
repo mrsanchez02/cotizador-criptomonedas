@@ -52,23 +52,23 @@ function App() {
   useEffect(()=>{
 
     const cotizarCriptomoneda = async () => {
-          // Evitamos la ejecucion la primera vez.
+        // Avoiding first time.
         if(moneda==='')return;
 
-        // Consultar la api para obtener la cotizacion.
-        const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`;
+        // Api querry to get data.
+        const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}&api_key=${process.env.REACT_APP_APIKEY}`;
 
         const resultado = await axios.get(url);
 
-        //Abrir modal
+        //Open modal
         // openCotizacion();
 
-        // Mostrar el spinner
+        // Show the spinner
         setLoading(true);
 
-        // Ocultar el spinner y mostrar el resultado.
+        // Hide spinner and show the result.
         setTimeout(()=>{
-          // Cambiar el estado 
+          // changing back state.
           setLoading(false);
           setResultado(resultado.data.DISPLAY[criptomoneda][moneda]);
       },2500)
@@ -79,8 +79,7 @@ function App() {
   },[moneda,criptomoneda]);
 
 
-  // Mostrar spinner o resultado
-
+  // Show spinner or result.
   const componente = (loading)? <Spinner/> : <Cotizacion resultado={resultado} closeCotizacion={closeCotizacion}/>
   
   return (
